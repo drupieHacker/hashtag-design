@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <div class="container">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 " style="margin-top:10px;"  >
+              
+                <iframe width="100%" height="400px" src="https://www.youtube.com/embed/tGRGT25vz10" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+           
+            </div>
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 " style="margin-top:10px;"  >
+              
+                <iframe width="100%" height="400px" src="https://www.youtube.com/embed/4oMSqq2oJpQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>           
+            </div>
+        </div>
+    </div> -->
+    <div class="container">
+        <section>
+          <div class="image" data-type="background" data-speed="2"></div>
+          <div class="stuff" data-type="content"><h1>Hashtag Design</h1><h2></h2></div>
+        </section>
+      
+        <section>
+          <div class="image" data-type="background" data-speed="7"></div>
+          <div class="stuff" data-type="content"><h2>Diseño gráfico</h2><p>En Hashtag design realizamos diferentes aplicaciones para la identidad gráfica</p></div>
+        </section>
+      
+        <section>
+          <div class="image" data-type="background" data-speed="6"></div>
+          <div class="stuff" data-type="content">Marketing Digital: Aplicamos estrategias de venta para empresas</div>
+        </section>
+      
+        <section>
+          <div class="image" data-type="background" data-speed="5"></div>
+          <div class="stuff" data-type="content">Sesiones fotograficas: Realizamos sesiones fotograficas en eventos sociales.</div>
+        </section>
+      
+        <section>
+          <div class="image" data-type="background" data-speed="3"></div>
+          <div class="stuff" data-type="content">Imprenta: Podemos realizar diseños de tarjetas de presentación, lonas publicitarias, banners y pines</div>
+        </section>
+      
+        <section>
+          <div class="image" data-type="background" data-speed="3"></div>
+          <div class="stuff" data-type="content">Stickers: Los stickers son diseñados en papel couche adhesivo</div>
+        </section>
+      </div>
+      
+      <div class="at-twitter"><a href="//twitter.com/hendrysadrak" target="_blank">@HashtagDesign</a></div>
+
+    <app-footer></app-footer>
+    <script>
+        // makes the parallax elements
+function parallaxIt() {
+
+// create variables
+var $fwindow = $(window);
+var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+// on window scroll event
+$fwindow.on('scroll resize', function() {
+  scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+}); 
+
+// for each of content parallax element
+$('[data-type="content"]').each(function (index, e) {
+  var $contentObj = $(this);
+  var fgOffset = parseInt($contentObj.offset().top);
+  var yPos;
+  var speed = ($contentObj.data('speed') || 1 );
+
+  $fwindow.on('scroll resize', function (){
+    yPos = fgOffset - scrollTop / speed; 
+
+    $contentObj.css('top', yPos);
+  });
+});
+
+// for each of background parallax element
+$('[data-type="background"]').each(function(){
+  var $backgroundObj = $(this);
+  var bgOffset = parseInt($backgroundObj.offset().top);
+  var yPos;
+  var coords;
+  var speed = ($backgroundObj.data('speed') || 0 );
+
+  $fwindow.on('scroll resize', function() {
+    yPos = - ((scrollTop - bgOffset) / speed); 
+    coords = '40% '+ yPos + 'px';
+
+    $backgroundObj.css({ backgroundPosition: coords });
+  }); 
+}); 
+
+// triggers winodw scroll for refresh
+$fwindow.trigger('scroll');
+};
+
+parallaxIt();
+    </script>
+</body>
+</html>
